@@ -5,14 +5,45 @@ const projects = [
     slug: "bpainting",
     title: "BPainting — site de serviços de pintura",
     description:
-      "Landing responsiva com foco em leads, otimizada em SEO e performance.",
-    impact: ["-45% LCP", "+32% conversões"],
+      "Landing responsiva do zero, focada em presença digital e captação de leads.",
+    impact: [
+      "Core Web Vitals em verde*",
+      "A11y AA (landmarks, foco visível, teclado)",
+      "SEO on-page pronto (titles, OG/Twitter, sitemap/robots)"
+    ],
     stack: ["React", "Next.js", "Tailwind", "A11y", "SEO"],
     links: {
-      live: "https://maycondev.com.br", // troque se quiser
+      live: "https://maycondev.com.br", // ajuste se necessário
       repo: "https://github.com/mayconSR",
     },
-    cover: "/projects/bpainting-cover.jpg", // coloque um arquivo em /public/projects/
+    cover: "/projects/bpainting-cover.jpg",
+    caseStudy: {
+      problem:
+        "O negócio não possuía site; presença digital inexistente e solicitação de orçamentos dependia de indicação/WhatsApp.",
+      context:
+        "Empresa local, prioridade para mobile e facilidade de contato.",
+      goals: [
+        "Estabelecer presença web com identidade da marca",
+        "Facilitar a solicitação de orçamento (CTA claro e formulário acessível)",
+        "Preparar base técnica para SEO local e mensuração com GA4"
+      ],
+      approach: [
+        "Next.js (App Router) com páginas estáticas onde possível",
+        "Imagens otimizadas com `next/image` e tipografia com `next/font`",
+        "Semântica correta e componentes com estados de foco/erro descritivos",
+        "Metadados completos (title/description, OG/Twitter) + sitemap/robots"
+      ],
+      solution: [
+        "Layout responsivo e legível, microinterações leves",
+        "Seções de serviços e prova social (quando disponível)",
+        "CTA evidente e rota de contato preparada para validação/GA4"
+      ],
+      results: [
+        "Site rápido e estável pronto para indexação e campanhas",
+        "Acessibilidade prática: skip link, navegação por teclado e contraste",
+        "GA4 configurável para eventos (cliques em CTA/formulário) assim que houver tráfego"
+      ]
+    }
   },
   {
     id: "upload-rhf-zod",
