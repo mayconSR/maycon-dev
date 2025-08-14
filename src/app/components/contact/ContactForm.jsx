@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { trackEvent } from "@/lib/ga";
+import { trackEvent } from "../../lib/ga";
 import { FiSend } from "react-icons/fi";
 
 export default function ContactForm() {
