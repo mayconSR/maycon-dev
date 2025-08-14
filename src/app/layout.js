@@ -4,6 +4,7 @@ import Script from "next/script";
 import ThemeProvider from "./components/ThemeProvider";
 import Header from "./components/Header";
 import AnimatedBackground from "./components/AnimatedBackground";
+import GAListener from "./components/GAListener";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -52,6 +53,18 @@ export default function RootLayout({ children }) {
           <main id="conteudo" className="min-h-dvh">{children}</main>
         </ThemeProvider>
       </body>
+      {GA_ID && (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+            <Script id="ga-init" strategy="afterInteractive">{`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_ID}', { anonymize_ip: true });
+            `}</Script>
++           <GAListener />
+          </>
+        )}
     </html>
   );
 }

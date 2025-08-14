@@ -1,6 +1,6 @@
-import { SITE_URL } from "@/lib/seo";
-import projects from "@/data/projects";
-import { posts } from "@/app/blog/posts-index";
+import { SITE_URL } from "./lib/seo";
+import projects from "./data/projects";
+import { posts } from "./app/blog/posts-index";
 
 export default async function sitemap() {
   const now = new Date();
