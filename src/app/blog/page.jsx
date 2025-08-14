@@ -1,6 +1,6 @@
-// app/blog/page.jsx
 import Link from "next/link";
 import { posts } from "./posts-index";
+import JsonLd from "../components/seo/JsonLd";
 
 export const metadata = {
   title: "Blog — Maycon Dev",
@@ -41,6 +41,15 @@ export default function BlogPage() {
           </li>
         ))}
       </ul>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          url: "https://maycondev.com.br/blog",
+          name: "Blog — Maycon Dev",
+          description: "Anotações curtas sobre React, Next.js, A11y e performance.",
+        }}
+      />
     </section>
   );
 }

@@ -3,6 +3,7 @@ import { profile, skillZones, capabilities } from "../data/about";
 import SkillZones from "../components/about/Skillzone";
 import CapabilityList from "../components/about/CapabilityList";
 import Timeline from "../components/about/Timeline";
+import JsonLd from "../components/seo/JsonLd";
 
 export const metadata = {
   title: "Sobre — Maycon Dev",
@@ -54,6 +55,15 @@ export default function AboutPage() {
           <Timeline items={[]} />
         </div>
       </section>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: profile.name,
+          jobTitle: profile.title,
+          url: "https://maycondev.com.br/about",
+        }}
+      />
     </section>
   );
 }

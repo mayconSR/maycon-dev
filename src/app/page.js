@@ -1,5 +1,6 @@
 import { FiGithub, FiMail, FiArrowRight } from "react-icons/fi";
 import Link from "next/link";
+import JsonLd from "./components/seo/JsonLd";
 
 export default function Home() {
   return (
@@ -24,6 +25,14 @@ export default function Home() {
           GitHub <FiGithub aria-hidden />
         </a>
       </div>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          url: "https://maycondev.com.br",
+          name: "Maycon Dev",
+        }}
+      />
     </section>
   );
 }
