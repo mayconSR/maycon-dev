@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
@@ -29,7 +30,7 @@ const GA_ID = process.env.NEXT_PUBLIC_GA_ID; // defina na Vercel
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-     <body className={`${inter.className} antialiased bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100`}>
+      <body className={`${inter.className} antialiased bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100`}>
         {/* GA4 */}
         {GA_ID && (
           <>
@@ -54,17 +55,19 @@ export default function RootLayout({ children }) {
         </ThemeProvider>
       </body>
       {GA_ID && (
-          <>
-            <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
-            <Script id="ga-init" strategy="afterInteractive">{`
+        <>
+          <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+          <Script id="ga-init" strategy="afterInteractive">{`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', '${GA_ID}', { anonymize_ip: true });
             `}</Script>
-+           <GAListener />
-          </>
-        )}
+          <Suspense fallback={null}>
+            +           <GAListener />
+          </Suspense>
+        </>
+      )}
     </html>
   );
 }
