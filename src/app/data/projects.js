@@ -1,5 +1,4 @@
-// data/projects.js
-const projects = [
+export const projects = [
   {
     id: "bpainting",
     slug: "bpainting",
@@ -14,9 +13,12 @@ const projects = [
     stack: ["React", "Next.js", "Tailwind", "A11y", "SEO"],
     links: {
       live: "https://maycondev.com.br", // ajuste se necessário
-      repo: "https://github.com/mayconSR",
+      repo: "https://github.com/mayconSR"
     },
-    cover: "/projects/bpainting-cover.jpg",
+    cover: "/projects/bpainting-cover.jpg", // coloque a imagem em public/projects/
+    isClient: true,
+    clientName: "Bpainting",
+    testimonial: null, // quando tiver o depoimento real, substitua por uma string
     caseStudy: {
       problem:
         "O negócio não possuía site; presença digital inexistente e solicitação de orçamentos dependia de indicação/WhatsApp.",
@@ -29,7 +31,7 @@ const projects = [
       ],
       approach: [
         "Next.js (App Router) com páginas estáticas onde possível",
-        "Imagens otimizadas com `next/image` e tipografia com `next/font`",
+        "Imagens otimizadas com next/image e tipografia com next/font",
         "Semântica correta e componentes com estados de foco/erro descritivos",
         "Metadados completos (title/description, OG/Twitter) + sitemap/robots"
       ],
@@ -46,63 +48,63 @@ const projects = [
     }
   },
   {
-    id: "upload-rhf-zod",
-    slug: "upload-rhf-zod",
-    title: "Componente de Upload — RHF + Zod",
+    slug: "youtube-music-queue-app",
+    title: "YouTube Music Queue — App",
     description:
-      "Upload de arquivos com validação por schema, feedbacks acessíveis e hooks reusáveis.",
-    impact: ["-60% erros de envio", "DX ↑"],
-    stack: ["React", "Tailwind", "React Hook Form", "Zod"],
-    links: {
-      live: "#",
-      repo: "https://github.com/mayconSR",
-    },
-    cover: null,
+      "Frontend que gerencia e reproduz em sequência músicas do YouTube enviadas pelos usuários.",
+    stack: ["React", "Vite", "YouTube IFrame API"],
+    repoUrl: "https://github.com/mayconSR/youtube-music-queue-app",
+    liveUrl: "https://youtube-music-queue-app.vercel.app",
+    image: null // se tiver thumb local, coloque o caminho aqui
   },
   {
-    id: "design-system",
-    slug: "design-system",
-    title: "Mini Design System",
+    slug: "youtube-music-queue-api",
+    title: "YouTube Music Queue — API",
     description:
-      "Tokens, tipografia e componentes base reutilizáveis (botões, inputs, cards).",
-    impact: ["-28% CSS", "consistência ↑"],
-    stack: ["React", "Tailwind"],
-    links: { live: "#", repo: "https://github.com/mayconSR" },
-    cover: null,
+      "API Node/Express que serve o app de fila de músicas do YouTube.",
+    stack: ["Node.js", "Express", "Vercel"],
+    repoUrl: "https://github.com/mayconSR/youtube-music-queue-api",
+    liveUrl: "https://youtube-music-queue-api.vercel.app",
+    image: null
   },
   {
-    id: "dashboard",
-    slug: "dashboard",
-    title: "Dashboard de Métricas",
+    slug: "dndstickynotes98",
+    title: "DndStickyNotes98",
     description:
-      "Listas e gráficos client-side com filtros e paginação acessíveis.",
-    impact: ["TTI rápido", "UX ↑"],
-    stack: ["React", "Next.js", "Tailwind"],
-    links: { live: "#", repo: "https://github.com/mayconSR" },
-    cover: null,
+      "Aplicação de notas adesivas com drag & drop e visual retrô Windows 98.",
+    stack: ["Next.js", "React", "Tailwind CSS"],
+    repoUrl: "https://github.com/mayconSR/dndstickynotes98",
+    liveUrl: "https://dndstickynotes98.vercel.app",
+    image: null
   },
   {
-    id: "nerdindica",
-    slug: "nerdindica",
-    title: "NerdIndica — blog de tecnologia",
+    slug: "react-weather-app",
+    title: "React Weather App",
     description:
-      "Estrutura de blog com MDX, otimização de SEO e compartilhamento social.",
-    impact: ["rich snippets", "indexação ↑"],
-    stack: ["Next.js", "MDX", "SEO", "Tailwind"],
-    links: { live: "#", repo: "https://github.com/mayconSR" },
-    cover: null,
+      "App de clima com busca por cidade e exibição de temperatura, umidade e vento.",
+    stack: ["React", "Vite", "Weather API"],
+    repoUrl: "https://github.com/mayconSR/react-weather-app",
+    liveUrl: "https://react-weather-app-ecru-psi.vercel.app",
+    image: null
   },
   {
-    id: "portfolio",
-    slug: "portfolio",
-    title: "Portfólio — Maycon Dev",
+    slug: "react-chatbot",
+    title: "React Chatbot",
     description:
-      "Este site: animações leves, A11y real e base forte de SEO.",
-    impact: ["Lighthouse 95+*"],
-    stack: ["React", "Next.js", "Tailwind", "A11y", "SEO"],
-    links: { live: "https://maycondev.com.br", repo: "https://github.com/mayconSR" },
-    cover: null,
+      "Chatbot com Next.js e Tailwind; exemplo de integração e personalização.",
+    stack: ["Next.js", "React", "Tailwind", "OpenAI"],
+    repoUrl: "https://github.com/mayconSR/react-chatbot",
+    liveUrl: "https://react-chatbot-five.vercel.app",
+    image: null
   },
+  {
+    slug: "portfolio-2024",
+    title: "Portfolio 2024",
+    description:
+      "Versão atualizada do seu portfólio em Next.js + Tailwind.",
+    stack: ["Next.js", "Tailwind CSS"],
+    repoUrl: "https://github.com/mayconSR/portfolio-2024",
+    liveUrl: "https://portfolio-2024-tau-blue.vercel.app",
+    image: null
+  }
 ];
-
-export default projects;

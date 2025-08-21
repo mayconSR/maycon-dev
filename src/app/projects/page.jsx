@@ -1,21 +1,34 @@
-import ProjectsView from "../components/projects/ProjectsView";
-import projects from "../data/projects";
+import { projects } from "../data/projects";
+import ProjectCard from "../components/projects/ProjectCard";
 
 export const metadata = {
   title: "Projetos — Maycon Dev",
-  description:
-    "Seleção de projetos com foco em performance, acessibilidade e SEO.",
-  alternates: { canonical: "/projects" },
+  description: "Alguns projetos públicos e estudos de caso.",
+  alternates: { canonical: "/projects" }
 };
 
 export default function ProjectsPage() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-12 md:py-16">
-      <h1 className="text-3xl md:text-5xl font-extrabold">Projetos</h1>
-      <p className="mt-3 text-black/70 dark:text-white/70 max-w-2xl">
-        Filtre por stack ou pesquise pelo nome/descrição. Cada card traz links para o repositório e a versão ao vivo.
-      </p>
-      <ProjectsView initialProjects={projects} />
-    </section>
+    <main className="container mx-auto px-4 py-10">
+      <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-6">
+        Projetos
+      </h1>
+      <section className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        {projects.map((p) => (
+          <ProjectCard
+            key={p.slug || p.id}
+            slug={p.slug}
+            title={p.title}
+            description={p.description}
+            stack={p.stack}
+            links={p.links}
+            cover={p.cover}
+            isClient={p.isClient}
+            clientName={p.clientName}
+            testimonial={p.testimonial}
+          />
+        ))}
+      </section>
+    </main>
   );
 }

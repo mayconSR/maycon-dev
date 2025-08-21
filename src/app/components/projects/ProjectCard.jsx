@@ -2,109 +2,136 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { trackEvent } from "../../lib/ga";
-import { FiExternalLink, FiGithub, FiImage } from "react-icons/fi";
+import { FiExternalLink, FiGithub, FiMessageSquare, FiFileText } from "react-icons/fi";
 
-export default function ProjectCard({ project }) {
-  const {
-    slug,
-    title,
-    description,
-    impact = [],
-    stack = [],
-    links = {},
-    cover,
-  } = project;
-
-  function click(type) {
-    trackEvent("project_click", {
-      project_title: title,
-      destination: type, // "live" | "repo"
-    });
-  }
-
+export default function ProjectCard({
+  slug,
+  title,
+  description,
+  stack = [],
+  links = {},
+  cover,
+  isClient = false,
+  clientName,
+  testimonial
+}) {
   return (
-    <article className="h-full rounded-2xl border border-black/10 dark:border-white/10 overflow-hidden bg-white/60 dark:bg-white/5 backdrop-blur">
-      {/* Capa -> link para o estudo de caso */}
-      <Link
-        href={`/projects/${slug}`}
-        className="relative block aspect-[16/9] bg-gradient-to-br from-black/5 to-black/10 dark:from-white/5 dark:to-white/10"
-        aria-label={`Abrir estudo de caso: ${title}`}
-      >
+    <article
+      className={[
+        "relative rounded-2xl border border-black/10 dark:border-white/10",
+        "backdrop-blur supports-[backdrop-filter]:bg-background/30",
+        "shadow-sm transition-shadow hover:shadow-md focus-within:shadow-md"
+      ].join(" ")}
+    >
+      {/* cover */}
+      <div className="overflow-hidden rounded-t-2xl">
         {cover ? (
-          <Image
-            src={cover}
-            alt="" /* decorativa */
-            fill
-            className="object-cover"
-            sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
-            priority={false}
-          />
+          <div className="relative aspect-[16/9]">
+            <Image
+              src={cover}
+              alt={title}
+              fill
+              sizes="(min-width: 768px) 33vw, 100vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+          </div>
         ) : (
-          <div className="absolute inset-0 grid place-items-center opacity-50">
-            <FiImage size={28} aria-hidden />
+          <div className="flex aspect-[16/9] items-center justify-center text-muted-foreground">
+            <span className="text-sm">sem imagem</span>
           </div>
         )}
-      </Link>
+      </div>
 
-      {/* Corpo */}
-      <div className="p-4 md:p-5 flex flex-col gap-3">
-        <h3 className="text-lg font-bold">
-          <Link href={`/projects/${slug}`} className="hover:underline">
-            {title}
-          </Link>
-        </h3>
+      {/* body */}
+      <div className="p-5">
+        <header className="mb-2 flex items-start gap-2">
+          <h3 className="text-lg font-semibold leading-snug">{title}</h3>
+          {isClient && (
+            <span
+              aria-label="Cliente real"
+              className="ml-auto inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium
+                         ring-1 ring-emerald-400/30 text-emerald-700 bg-emerald-50
+                         dark:text-emerald-200 dark:bg-emerald-900/30 dark:ring-emerald-700/30"
+            >
+              Cliente real
+            </span>
+          )}
+        </header>
 
-        <p className="text-sm opacity-80">{description}</p>
+        <p className="mb-4 text-sm text-muted-foreground">{description}</p>
 
-        {/* “Impacto”/Qualidade (chips) */}
-        {impact?.length > 0 && (
-          <ul className="flex flex-wrap gap-2 text-xs opacity-80" aria-label="Destaques do projeto">
-            {impact.map((it, i) => (
-              <li key={i} className="px-2 py-1 rounded bg-black/5 dark:bg-white/10">
-                {it}
+        {/* stack */}
+        {stack?.length > 0 && (
+          <ul className="mb-4 flex flex-wrap gap-2">
+            {stack.map((t) => (
+              <li
+                key={t}
+                className="rounded-full bg-muted/50 px-2.5 py-1 text-[11px] leading-none text-foreground/90"
+              >
+                {t}
               </li>
             ))}
           </ul>
         )}
 
-        {/* Stack */}
-        <ul className="mt-1 flex flex-wrap gap-2">
-          {stack.map((t) => (
-            <li
-              key={t}
-              className="px-2 py-1 rounded-full text-xs border border-black/10 dark:border-white/15"
-            >
-              {t}
-            </li>
-          ))}
-        </ul>
-
-        {/* Ações */}
-        <div className="mt-2 flex gap-2">
-          {links.live && links.live !== "#" && (
-            <a
-              href={links.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => click("live")}
-              className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-teal-600 text-white hover:opacity-90"
-            >
-              Live <FiExternalLink aria-hidden />
-            </a>
-          )}
+        {/* links */}
+        <div className="mb-4 flex flex-wrap gap-2">
           {links.repo && (
             <a
               href={links.repo}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => click("repo")}
-              className="inline-flex items-center gap-2 px-3 py-2 rounded-xl border border-black/10 dark:border-white/10"
+              className="inline-flex items-center gap-2 rounded-lg ring-1 ring-border/40 px-3 py-1.5 text-sm hover:bg-accent/5
+                         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
-              Repo <FiGithub aria-hidden />
+              <FiGithub aria-hidden /> Código
             </a>
           )}
+          {links.live && (
+            <a
+              href={links.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg ring-1 ring-border/40 px-3 py-1.5 text-sm hover:bg-accent/5
+                         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            >
+              <FiExternalLink aria-hidden /> Demo
+            </a>
+          )}
+          {slug && (
+            <Link
+              href={`/projects/${slug}`}
+              className="inline-flex items-center gap-2 rounded-lg ring-1 ring-border/40 px-3 py-1.5 text-sm hover:bg-accent/5
+                         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            >
+              <FiFileText aria-hidden /> Estudo de caso
+            </Link>
+          )}
         </div>
+
+        {/* depoimento */}
+        <section
+          aria-label="Depoimento do cliente"
+          className="rounded-2xl bg-muted/20 p-3 ring-1 ring-border/30"
+        >
+          <div className="mb-1 flex items-center gap-2 text-sm font-medium">
+            <FiMessageSquare aria-hidden />
+            <span>Feedback do cliente</span>
+            {clientName && (
+              <span className="text-xs text-muted-foreground">— {clientName}</span>
+            )}
+          </div>
+          {testimonial ? (
+            <blockquote className="text-sm leading-relaxed border-l-2 border-accent/40 pl-3">
+              <span className="select-none text-xl">“</span>
+              {testimonial}
+              <span className="select-none text-xl">”</span>
+            </blockquote>
+          ) : (
+            <p className="text-sm text-muted-foreground">Em breve.</p>
+          )}
+        </section>
       </div>
     </article>
   );

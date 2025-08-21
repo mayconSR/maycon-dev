@@ -7,4 +7,12 @@ export const posts = [
     tags: ["nextjs", "mdx", "a11y"],
     readingTime: "2–3 min",
   },
+  {
+    slug: "lembrete",
+    title: "Lembrete: Criar um jeito melhor de criar posts",
+    date: "2025-08-14",
+    description: "Criar um jeito melhor de criar posts",
+    tags: ["nextjs", "a11y"],
+    readingTime: "2–3 min",
+  },
 ];
