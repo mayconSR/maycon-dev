@@ -66,7 +66,7 @@ export default function RootLayout({ children }) {
               gtag('config', '${GA_ID}', { anonymize_ip: true });
             `}</Script>
           <Suspense fallback={null}>
-            +           <GAListener />
+          <GAListener />
           </Suspense>
         </>
       )}
