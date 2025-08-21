@@ -6,6 +6,7 @@ import ThemeProvider from "./components/ThemeProvider";
 import Header from "./components/Header";
 import AnimatedBackground from "./components/AnimatedBackground";
 import GAListener from "./components/GAListener";
+import Footer from "./components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -52,6 +53,7 @@ export default function RootLayout({ children }) {
           <AnimatedBackground />
           <Header />
           <main id="conteudo" className="min-h-dvh">{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
       {GA_ID && (
