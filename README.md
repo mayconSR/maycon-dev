@@ -122,7 +122,7 @@ public/
 - **/projects/[slug]** — estudo de caso (Problema → Contexto → Objetivos → Abordagem → Solução → Resultados) + depoimento.
 - **/blog** — posts em MDX (wrapper `.jsx` temporário para evitar erro de `createContext` em RSC).
 - **/contact** — formulário com validação, honeypot e integração via `/api/contact` (proxy).
-- **/license** — Código MIT; Conteúdo CC BY‑NC 4.0; exceções e como creditar.
+- **/privacy** — Código MIT; Conteúdo CC BY‑NC 4.0; exceções e como creditar.
 
 ---
 
