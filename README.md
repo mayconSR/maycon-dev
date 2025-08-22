@@ -79,7 +79,7 @@ CONTACT_API_KEY=
 ```
 src/
   app/
-    license/
+    privacy/
       page.jsx            # Licenças (MIT p/ código, CC BY-NC p/ conteúdo)
     blog/
       page.jsx            # Índice
