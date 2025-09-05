@@ -13,7 +13,9 @@ export default function Header() {
   // trava o scroll quando o painel estiver aberto
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   // ESC fecha + foco no primeiro link ao abrir
@@ -25,7 +27,11 @@ export default function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-20 backdrop-blur supports-[backdrop-filter]:bg-white/40 dark:supports-[backdrop-filter]:bg-black/20">
+    <header
+      className="sticky top-0 z-20 bg-white/80 dark:bg-black/70
+ md:backdrop-blur supports-[backdrop-filter]:md:bg-white/40
+ dark:supports-[backdrop-filter]:md:bg-black/20"
+    >
       <nav className="mx-auto max-w-6xl px-4 py-3 flex items-center gap-4">
         <Link href="/" className="flex items-center gap-2 font-semibold">
           <FiTerminal aria-hidden />
@@ -34,11 +40,21 @@ export default function Header() {
 
         {/* DESKTOP (inalterado) */}
         <div className="ml-auto hidden md:flex items-center gap-3">
-          <Link className="hover:underline" href="/projects">Projetos</Link>
-          <Link className="hover:underline" href="/about">Sobre</Link>
-          <Link className="hover:underline" href="/services">Serviços</Link>
-          <Link className="hover:underline" href="/blog">Blog</Link>
-          <Link className="hover:underline" href="/contact">Contato</Link>
+          <Link className="hover:underline" href="/projects">
+            Projetos
+          </Link>
+          <Link className="hover:underline" href="/about">
+            Sobre
+          </Link>
+          <Link className="hover:underline" href="/services">
+            Serviços
+          </Link>
+          <Link className="hover:underline" href="/blog">
+            Blog
+          </Link>
+          <Link className="hover:underline" href="/contact">
+            Contato
+          </Link>
           <LocaleSwitcher />
           <ThemeToggle />
         </div>
@@ -69,7 +85,11 @@ export default function Header() {
           className="fixed inset-0 z-[80] md:hidden bg-white dark:bg-zinc-900"
         >
           <div className="mx-auto max-w-6xl px-4 py-3 flex items-center gap-4 border-b border-black/10 dark:border-white/10">
-            <Link href="/" onClick={() => setOpen(false)} className="flex items-center gap-2 font-semibold">
+            <Link
+              href="/"
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-2 font-semibold"
+            >
               <FiTerminal aria-hidden />
               <span>Maycon Dev</span>
             </Link>
@@ -92,10 +112,10 @@ export default function Header() {
             <ul className="flex flex-col gap-1">
               {[
                 { href: "/projects", label: "Projetos" },
-                { href: "/about",    label: "Sobre" },
+                { href: "/about", label: "Sobre" },
                 { href: "/services", label: "Serviços" },
-                { href: "/blog",     label: "Blog" },
-                { href: "/contact",  label: "Contato" },
+                { href: "/blog", label: "Blog" },
+                { href: "/contact", label: "Contato" },
               ].map((item, idx) => (
                 <li key={item.href}>
                   <Link

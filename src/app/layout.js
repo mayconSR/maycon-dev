@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Inter } from "next/font/google";
+import { inter } from "./fonts";
 import "./globals.css";
 import Script from "next/script";
 import ThemeProvider from "./components/ThemeProvider";
@@ -8,7 +8,6 @@ import AnimatedBackground from "./components/AnimatedBackground";
 import GAListener from "./components/GAListener";
 import Footer from "./components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   metadataBase: new URL("https://maycondev.com.br"),
@@ -30,7 +29,7 @@ const GA_ID = process.env.NEXT_PUBLIC_GA_ID; // defina na Vercel
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
+    <html lang="pt-BR" className={inter.variable} suppressHydrationWarning>
       <body className={`${inter.className} antialiased bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100`}>
         {/* GA4 */}
         {GA_ID && (
