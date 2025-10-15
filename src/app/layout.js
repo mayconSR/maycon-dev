@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import AnimatedBackground from "./components/AnimatedBackground";
 import GAListener from "./components/GAListener";
 import Footer from "./components/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 export const metadata = {
@@ -54,6 +55,7 @@ export default function RootLayout({ children }) {
           <main id="conteudo" className="min-h-dvh">{children}</main>
           <Footer />
         </ThemeProvider>
+        <SpeedInsights />
       </body>
       {GA_ID && (
         <>
