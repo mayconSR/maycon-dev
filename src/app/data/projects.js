@@ -12,13 +12,12 @@ export const projects = [
     ],
     stack: ["React", "Next.js", "Tailwind", "A11y", "SEO"],
     links: {
-      live: "https://maycondev.com.br", // ajuste se necessário
-      repo: "https://github.com/mayconSR"
+      live: "https://bpaintingnyc.com", 
     },
-    cover: "/projects/bpainting-cover.jpg", // coloque a imagem em public/projects/
+    cover: "/projects/bpainting-cover.png",
     isClient: true,
     clientName: "Bpainting",
-    testimonial: null, // quando tiver o depoimento real, substitua por uma string
+    testimonial: null, 
     caseStudy: {
       problem:
         "O negócio não possuía site; presença digital inexistente e solicitação de orçamentos dependia de indicação/WhatsApp.",

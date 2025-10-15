@@ -96,7 +96,7 @@ export default function ProjectCard({
               className="inline-flex items-center gap-2 rounded-lg ring-1 ring-border/40 px-3 py-1.5 text-sm hover:bg-accent/5
                          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
-              <FiExternalLink aria-hidden /> Demo
+              <FiExternalLink aria-hidden /> Live
             </a>
           )}
           {slug && (

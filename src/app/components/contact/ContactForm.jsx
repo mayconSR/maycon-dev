@@ -15,7 +15,7 @@ export default function ContactForm() {
 
     setState({ loading: true, ok: false, error: "" });
     try {
-      const r = await fetch("/api/contact", {
+      const r = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
