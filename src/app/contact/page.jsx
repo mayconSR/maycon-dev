@@ -17,7 +17,7 @@ export default function ContactPage() {
       <ContactForm />
 
       <p className="mt-8 text-sm opacity-70">
-        Prefere direto? <a className="underline decoration-teal-500" href="mailto:contato@maycondev.com.br">contato@maycondev.com.br</a>
+        Prefere direto? <a className="underline decoration-teal-500" href="mailto:dev.mayconrodrigues@gmail.com">dev.mayconrodrigues@gmail.com</a>
       </p>
     </section>
   );

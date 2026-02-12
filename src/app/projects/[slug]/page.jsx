@@ -85,25 +85,25 @@ export default function ProjectCasePage({ params }) {
           <div className="prose dark:prose-invert max-w-none prose-headings:scroll-mt-28">
             <h2>Problema</h2>
             <p>{caseStudy.problem}</p>
-
+            <br />
             <h2>Contexto</h2>
             <p>{caseStudy.context}</p>
-
+            <br />
             <h2>Objetivos</h2>
             <ul>
               {caseStudy.goals.map((g) => <li key={g}>{g}</li>)}
             </ul>
-
+            <br />
             <h2>Abordagem</h2>
             <ul>
               {caseStudy.approach.map((a) => <li key={a}>{a}</li>)}
             </ul>
-
+            <br />
             <h2>Solução</h2>
             <ul>
               {caseStudy.solution.map((s) => <li key={s}>{s}</li>)}
             </ul>
-
+            <br />
             <h2>Resultados</h2>
             <ul>
               {caseStudy.results.map((r) => <li key={r}>{r}</li>)}
